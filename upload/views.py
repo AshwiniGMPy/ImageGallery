@@ -43,12 +43,13 @@ def image_view(request):
     form = GalleryForm() 
 
     # List all the image files in the media path
-    imgs = os.listdir(media_path + '/images')
+    imgs = os.listdir(media_path + '/images/')
 
     # Collect all the image paths
     for img in imgs:
         img = os.path.join(path , img)
-        images.append(img)
+        if 'jpg|png' in img:
+            images.append(img)
 
     
     return render(request, 'index.html', {'form' : form, 'images':images}) 
