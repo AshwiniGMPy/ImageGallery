@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Image Gallery</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+    </head>
+    <body>
+	    
+        <div>
+            <div id="i_image_upload_form_div">
+                <h3>Image Upload</h3>
+                <form method = "post" action="{% url 'image_upload' %}" id="i_image_upload_form" enctype="multipart/form-data"> 
+                    {% csrf_token %} 
+                    {{ form.as_p }} 
+                    <button type="submit" style="text-align:center;">Upload</button> 
+                </form> 
+            </div>
+            <div id="i_image_search_form_div">
+                <h3>Filter image Based on Category</h3>
+                <form action="{% url 'search_result' %}" id="i_image_search_form" method="get">
+
+                    <select name="category" style="height: 25px;" id="id_category">
+                        <option value="Nature">Nature</option>
+                      
+                        <option value="Person">Person</option>
+                      
+                        <option value="Sculpture">Sculpture</option>
+                      
+                        <option value="Monuments">Monuments</option>
+                      
+                        <option value="Objects">Objects</option>
+                      
+                        <option value="Paintings">Paintings</option>
+                      
+                        <option value="Others" selected="">Others</option>
+                    </select>
+
+                    <button type="submit" style="margin-left: 10px;" name="button">Submit</button>
+                </form>
+
+                <form action="{% url 'clear_search' %}" style="text-align:center;margin-top: 20px;" method="get">                   
+                    <button type="submit" name="button">clear Filter</button>
+                </form>
+
+            </div>
+        </div>
+		
+
+
+        <div id='i_gallery_div'>
+            <h3 id='i_gallery_title'>Gallery</h3>
+            
+
+            <div class="container">
+
+                {% if images|length > 0 %}
+                <div class="row">
+                    {% for img in images %}
+                    <div class="col-md-4">
+                      <div class="thumbnail">
+                        <a href="/tobytes{{ img }}" target="_blank">
+                          <img src="/tobytes{{ img }}" alt="Lights" style="width:100%; height: 300px;">
+                        </a>
+                      </div>
+                    </div>
+                    {% endfor %}
+                </div>  
+                {% else %}
+                    <h4 style="text-align:center;margin-top: 100px;">Upload An Image</h4> 
+                {% endif %}
+                    
+                <!--{% for img in images %}   
+                <img src="/tobytes{{ img }}" class="img-rounded" alt="Cinque Terre" width="304" height="236"> 
+                {% endfor %}-->
+            </div>
+        </div>
+        </div>
+        
+    </body>
+</html>

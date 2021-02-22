@@ -1,0 +1,46 @@
+#i_gallery_div{
+    position: absolute;
+    height: 400px;
+    width: -webkit-fill-available;
+    border-top: solid black;
+}
+
+#i_gallery_title{
+    text-align: center;
+}
+
+input[type=file] {
+    display: inline-block;
+}
+
+#i_image_upload_form_div{
+    position:relative;
+    width: 50%;
+    background-color: rgb(171 214 212);
+    height: 200px;
+}
+
+#i_image_search_form_div{
+    position: relative;
+    width: 50%;
+    background-color: rgb(171 214 212);
+    height: 200px;
+    margin-right: 0;
+    margin-left: 50%;
+    margin-top: -200px;
+}
+#i_image_upload_form{
+    margin-left: 35%;
+    margin-top: 15px;
+}
+
+#i_image_search_form{
+    margin-left: 35%;
+    margin-top: 25px;
+}
+
+h3{
+    margin: 0;
+    text-align: center;
+}
+
